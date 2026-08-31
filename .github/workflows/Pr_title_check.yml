@@ -1,0 +1,29 @@
+name: PR Title Check
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+jobs:
+  check-pr-title:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate PR title format
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          echo "PR Title: $PR_TITLE"
+
+          # Conventional commit style: type(target-branch): Title info
+          # e.g. fix(development): Ci workflows
+          PATTERN="^(feat|fix|chore|docs|style|refactor|perf|test|build|ci|revert)\([a-zA-Z0-9._-]+\): .+$"
+
+          if [[ ! "$PR_TITLE" =~ $PATTERN ]]; then
+            echo "❌ PR title does not match required format."
+            echo "Expected format: type(target-branch): Title info"
+            echo "Example: fix(development): Ci workflows"
+            echo "Allowed types: feat, fix, chore, docs, style, refactor, perf, test, build, ci, revert"
+            exit 1
+          fi
+
+          echo "✅ PR title format is valid."
