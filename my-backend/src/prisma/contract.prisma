@@ -1,0 +1,30 @@
+// use prisma-next
+
+model User {
+  id Int @id @default(autoincrement())
+  fullname String?
+  email String @unique
+}
+
+model Books {
+  id Int @id @default(autoincrement())
+  book_title String
+  author String
+  publisher String
+  category String
+  description String
+}
+
+model Book_variant {
+  id Int @id @default(autoincrement())
+  edition String
+  mrp Float
+  seller_price Float
+  final_price Float
+  coverImage String
+  backImage String
+  book_id Int
+
+  variant Books @relation(fields: [book_id], references: [id])
+}
+
