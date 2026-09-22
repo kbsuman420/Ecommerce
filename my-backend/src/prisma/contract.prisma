@@ -1,30 +1,92 @@
 // use prisma-next
 
+model Role {
+  id        Int      @id @default(autoincrement())
+  role      String   @unique
+  users     User[]
+  createdAt DateTime @default(now())
+}
+
 model User {
-  id Int @id @default(autoincrement())
-  fullname String?
-  email String @unique
+  id           Int        @id @default(autoincrement())
+  fname        String?
+  lname        String?
+  email        String     @unique
+  roleId       Int
+  userRole     Role       @relation(fields: [roleId], references: [id])
+  profileImage String?
+  phoneNo      String?
+  password     String
+  refreshToken String?
+  facebookId   String?
+  googleId     String?
+
+  cart         Cart?
+  wishlist     Wishlist[]
+
+  createdAt    DateTime   @default(now())
 }
 
-model Books {
-  id Int @id @default(autoincrement())
-  book_title String
-  author String
-  publisher String
-  category String
-  description String
+enum Status {
+  DRAFT
+  SUBMITTED
+  IN_REVIEW
+  APPROVED
+  PUBLISHED
+  REJECTED
+  SUSPENDED
 }
 
-model Book_variant {
-  id Int @id @default(autoincrement())
-  edition String
-  mrp Float
-  seller_price Float
-  final_price Float
-  coverImage String
-  backImage String
-  book_id Int
-
-  variant Books @relation(fields: [book_id], references: [id])
+model Category {
+  id          Int       @id @default(autoincrement())
+  name        String    @unique
+  products    Product[]
+  createdAt   DateTime  @default(now())
 }
 
+model Product {
+  id          Int         @id @default(autoincrement())
+  title       String
+  description String?
+  price       Float
+  stock       Int         @default(0)
+  images      String[]
+  status      Status      @default(DRAFT)
+  categoryId  Int?
+  category    Category?   @relation(fields: [categoryId], references: [id])
+
+  cartItems   CartItems[]
+  wishlists   Wishlist[]
+
+  createdAt   DateTime    @default(now())
+}
+
+model Wishlist {
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  productId   Int
+  product     Product  @relation(fields: [productId], references: [id])
+  user        User     @relation(fields: [userId], references: [id])
+
+  createdAt   DateTime @default(now())
+}
+
+model Cart {
+  id          Int         @id @default(autoincrement())
+  userId      Int         @unique
+  user        User        @relation(fields: [userId], references: [id])
+  items       CartItems[]
+
+  createdAt   DateTime    @default(now())
+}
+
+model CartItems {
+  id          Int      @id @default(autoincrement())
+  cartId      Int
+  productId   Int
+  cart        Cart     @relation(fields: [cartId], references: [id])
+  product     Product  @relation(fields: [productId], references: [id])
+  quantity    Int      @default(1)
+
+  createdAt   DateTime @default(now())
+}
