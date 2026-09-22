@@ -1,0 +1,208 @@
+import type { Category, Product } from '../types/product';
+import type { User } from '../types/auth';
+
+export const mockCategories: Category[] = [
+  { id: 1, name: 'Electronics & Gadgets', slug: 'electronics', image: 'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=500&auto=format&fit=crop&q=60' },
+  { id: 2, name: 'Fashion & Apparel', slug: 'fashion', image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?w=500&auto=format&fit=crop&q=60' },
+  { id: 3, name: 'Home & Living', slug: 'home-living', image: 'https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=500&auto=format&fit=crop&q=60' },
+  { id: 4, name: 'Smartphones & Audio', slug: 'phones-audio', image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&auto=format&fit=crop&q=60' },
+  { id: 5, name: 'Beauty & Wellness', slug: 'beauty', image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=500&auto=format&fit=crop&q=60' },
+  { id: 6, name: 'Sports & Outdoors', slug: 'sports', image: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=500&auto=format&fit=crop&q=60' },
+];
+
+export const mockProducts: Product[] = [
+  {
+    id: 1,
+    title: 'Aura Wireless Active Noise-Cancelling Headphones',
+    description: 'High-fidelity audio with intelligent ambient noise cancellation, 40-hour battery life, and ultra-soft memory foam earcups.',
+    price: 189.99,
+    originalPrice: 249.99,
+    rating: 4.8,
+    reviewsCount: 342,
+    stock: 24,
+    images: [
+      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=700&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=700&auto=format&fit=crop&q=80'
+    ],
+    status: 'PUBLISHED',
+    categoryId: 1,
+    categoryName: 'Electronics & Gadgets',
+    sellerId: 101,
+    sellerName: 'Paidal Electronics',
+    isFeatured: true,
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: 2,
+    title: 'Precision Mechanical Gaming Keyboard RGB',
+    description: 'Custom hot-swappable mechanical switches with per-key RGB illumination, programmable macros, and aircraft-grade aluminum top frame.',
+    price: 129.50,
+    originalPrice: 159.00,
+    rating: 4.9,
+    reviewsCount: 512,
+    stock: 18,
+    images: [
+      'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=700&auto=format&fit=crop&q=80'
+    ],
+    status: 'PUBLISHED',
+    categoryId: 1,
+    categoryName: 'Electronics & Gadgets',
+    sellerId: 101,
+    sellerName: 'Paidal Electronics',
+    isFeatured: true,
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: 3,
+    title: 'Minimalist Swiss Automatic Chronograph Watch',
+    description: 'Sapphire crystal glass, genuine Italian full-grain leather strap, and 50m water resistance. A timeless masterpiece.',
+    price: 349.00,
+    originalPrice: 420.00,
+    rating: 4.7,
+    reviewsCount: 129,
+    stock: 12,
+    images: [
+      'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=700&auto=format&fit=crop&q=80'
+    ],
+    status: 'PUBLISHED',
+    categoryId: 2,
+    categoryName: 'Fashion & Apparel',
+    sellerId: 102,
+    sellerName: 'Vogue & Craft',
+    isFeatured: true,
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: 4,
+    title: 'Smart Ceramic Pour-Over Electric Kettle',
+    description: 'Digital variable temperature control with real-time LCD display, keep-warm mode, and precision gooseneck spout.',
+    price: 84.99,
+    originalPrice: 99.99,
+    rating: 4.6,
+    reviewsCount: 88,
+    stock: 35,
+    images: [
+      'https://images.unsplash.com/photo-1544816155-12df9643f363?w=700&auto=format&fit=crop&q=80'
+    ],
+    status: 'PUBLISHED',
+    categoryId: 3,
+    categoryName: 'Home & Living',
+    sellerId: 103,
+    sellerName: 'Nordic Modern Living',
+    isFeatured: false,
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: 5,
+    title: 'Ultra-Fast GaN 100W 4-Port USB-C Desktop Charger',
+    description: 'Compact Gallium Nitride power adapter capable of fast-charging two laptops and two phones simultaneously at maximum efficiency.',
+    price: 49.99,
+    originalPrice: 65.00,
+    rating: 4.9,
+    reviewsCount: 420,
+    stock: 50,
+    images: [
+      'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=700&auto=format&fit=crop&q=80'
+    ],
+    status: 'PUBLISHED',
+    categoryId: 1,
+    categoryName: 'Electronics & Gadgets',
+    sellerId: 101,
+    sellerName: 'Paidal Electronics',
+    isFeatured: true,
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: 6,
+    title: 'Ergonomic Breathable Mesh Executive Chair',
+    description: 'Adjustable 3D lumbar support, multi-angle synchro-tilt mechanism, 4D armrests, and quiet rollerblade wheels.',
+    price: 269.00,
+    originalPrice: 329.00,
+    rating: 4.8,
+    reviewsCount: 215,
+    stock: 15,
+    images: [
+      'https://images.unsplash.com/photo-1580481077197-2a6c3823485d?w=700&auto=format&fit=crop&q=80'
+    ],
+    status: 'PUBLISHED',
+    categoryId: 3,
+    categoryName: 'Home & Living',
+    sellerId: 103,
+    sellerName: 'Nordic Modern Living',
+    isFeatured: false,
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: 7,
+    title: 'All-Day Polarized UV400 Acetate Sunglasses',
+    description: 'Handcrafted acetate frame with scratch-resistant polarized lenses providing 100% protection against harmful UVA/UVB rays.',
+    price: 68.00,
+    originalPrice: 85.00,
+    rating: 4.5,
+    reviewsCount: 94,
+    stock: 40,
+    images: [
+      'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=700&auto=format&fit=crop&q=80'
+    ],
+    status: 'PUBLISHED',
+    categoryId: 2,
+    categoryName: 'Fashion & Apparel',
+    sellerId: 102,
+    sellerName: 'Vogue & Craft',
+    isFeatured: false,
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: 8,
+    title: 'Stainless Steel Insulated Thermal Water Bottle (1L)',
+    description: 'Triple-wall vacuum insulation keeps liquids cold for 24 hours or piping hot for 12 hours. BPA-free leakproof lid.',
+    price: 28.50,
+    originalPrice: 35.00,
+    rating: 4.9,
+    reviewsCount: 630,
+    stock: 80,
+    images: [
+      'https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=700&auto=format&fit=crop&q=80'
+    ],
+    status: 'PUBLISHED',
+    categoryId: 6,
+    categoryName: 'Sports & Outdoors',
+    sellerId: 103,
+    sellerName: 'Nordic Modern Living',
+    isFeatured: false,
+    createdAt: new Date().toISOString(),
+  }
+];
+
+export const mockUsers: Record<string, User> = {
+  customer: {
+    id: 1,
+    fname: 'Alex',
+    lname: 'Morgan',
+    email: 'customer@demo.com',
+    role: 'CUSTOMER',
+    profileImage: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
+    phoneNo: '+1 (555) 234-5678',
+    createdAt: new Date().toISOString(),
+  },
+  seller: {
+    id: 101,
+    fname: 'David',
+    lname: 'Chen',
+    email: 'seller@demo.com',
+    role: 'SELLER',
+    profileImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+    phoneNo: '+1 (555) 876-5432',
+    createdAt: new Date().toISOString(),
+  },
+  admin: {
+    id: 999,
+    fname: 'Sarah',
+    lname: 'Jenkins',
+    email: 'admin@demo.com',
+    role: 'ADMIN',
+    profileImage: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80',
+    phoneNo: '+1 (555) 999-0000',
+    createdAt: new Date().toISOString(),
+  }
+};
